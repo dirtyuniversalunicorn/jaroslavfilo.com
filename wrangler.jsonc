@@ -35,7 +35,14 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
+	"d1_databases": [
+		{
+			"binding": "jaroslavfilo_db",
+			"database_name": "jaroslavfilo-db",
+			"database_id": "f69a3d3b-479e-4b01-9f53-d03605a8d9bd"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
