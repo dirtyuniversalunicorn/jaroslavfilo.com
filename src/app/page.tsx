@@ -1,7 +1,12 @@
+import { AbsoluteCenter, Link, Text, VStack } from "@chakra-ui/react";
+
 export default function Home() {
   return (
-    <div>
-      <a href="/api/beverages">Go to /api/beverages</a>
-    </div>
+    <AbsoluteCenter>
+      <VStack>
+        <Text>Please visit this API endpoint:</Text>
+        <Link href="/api/beverages">Get beverages</Link>
+      </VStack>
+    </AbsoluteCenter>
   );
 }
