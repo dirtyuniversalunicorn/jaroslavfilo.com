@@ -4,35 +4,33 @@ import "./globals.css";
 import { Provider } from "@/shared/components/ui/provider";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+	variable: "--font-geist-sans",
+	subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+	variable: "--font-geist-mono",
+	subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Jaroslav Filo",
-  description: "Welcome to my portfolio page!",
+	title: "Jaroslav Filo",
+	description: "Welcome to my portfolio page!",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Provider>{children}</Provider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
+			</head>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				<Provider>{children}</Provider>
+			</body>
+		</html>
+	);
 }
