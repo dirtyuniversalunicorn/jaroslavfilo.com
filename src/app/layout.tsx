@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { navigation } from "@/shared/components/navigation/navigation-config";
+import { NavigationShell } from "@/shared/components/navigation/navigation-shell";
 import { Provider } from "@/shared/components/ui/provider";
 
 const geistSans = Geist({
@@ -24,12 +26,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html className="dark" lang="en" suppressHydrationWarning>
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Provider>{children}</Provider>
+				<Provider>
+					<NavigationShell navigation={navigation} />
+					{children}
+				</Provider>
 			</body>
 		</html>
 	);
