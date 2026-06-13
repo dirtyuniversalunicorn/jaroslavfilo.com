@@ -1,0 +1,53 @@
+import { Badge, Box, Flex, Link, SimpleGrid, Stack, Text, Wrap } from "@chakra-ui/react";
+import NextLink from "next/link";
+import type { ProjectViewModel } from "../types";
+
+export type ProjectListProps = {
+	projects: ProjectViewModel[];
+	limit?: number | "all";
+};
+
+export function ProjectList({ projects, limit = "all" }: ProjectListProps) {
+	const visibleProjects = limit === "all" ? projects : projects.slice(0, limit);
+
+	if (visibleProjects.length === 0) {
+		return (
+			<Box borderWidth="1px" borderColor="whiteAlpha.200" px={{ base: 5, md: 8 }} py={{ base: 8, md: 10 }}>
+				<Stack gap={3} maxW="42rem">
+					<Text as="h2" fontSize={{ base: "2xl", md: "3xl" }} fontWeight={400}>
+						Projects are coming soon.
+					</Text>
+					<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
+						There are no projects to display yet. The UI is ready; when D1 starts returning project rows, they will appear here automatically.
+					</Text>
+				</Stack>
+			</Box>
+		);
+	}
+
+	return (
+		<SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 4, md: 5 }}>
+			{visibleProjects.map((project) => (
+				<Box key={project.id} borderWidth="1px" borderColor="whiteAlpha.200" px={{ base: 5, md: 6 }} py={{ base: 5, md: 6 }}>
+					<Stack gap={4}>
+						<Wrap gap={2}>
+							{project.technologies.map((technology) => (
+								<Badge key={technology} borderRadius={0} variant="outline">
+									{technology}
+								</Badge>
+							))}
+						</Wrap>
+						<Flex direction="column" gap={3}>
+							<Link asChild color="white" fontSize={{ base: "2xl", md: "3xl" }} fontWeight={500}>
+								<NextLink href={`/projects/${project.slug}`}>{project.title}</NextLink>
+							</Link>
+							<Text color="whiteAlpha.700" lineHeight="1.7">
+								{project.shortDescription}
+							</Text>
+						</Flex>
+					</Stack>
+				</Box>
+			))}
+		</SimpleGrid>
+	);
+}
