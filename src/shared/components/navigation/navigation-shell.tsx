@@ -8,6 +8,11 @@ import type { NavigationShellProps } from "./navigation-types";
 
 export const NavigationShell = ({ navigation }: NavigationShellProps) => {
 	const [hasScrolled, setHasScrolled] = useState(false);
+	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const hasSolidBackground = hasScrolled || isMobileMenuOpen;
+
+	const toggleMobileMenu = () => setMobileMenuOpen((isOpen) => !isOpen);
+	const closeMobileMenu = () => setMobileMenuOpen(false);
 
 	useEffect(() => {
 		const updateScrolledState = () => {
@@ -23,8 +28,8 @@ export const NavigationShell = ({ navigation }: NavigationShellProps) => {
 	return (
 		<Box
 			as="header"
-			bg={hasScrolled ? "rgba(9, 9, 11, 0.96)" : "transparent"}
-			borderBottomWidth={hasScrolled ? "1px" : "0"}
+			bg={hasSolidBackground ? "rgba(9, 9, 11, 0.96)" : "transparent"}
+			borderBottomWidth={hasSolidBackground ? "1px" : "0"}
 			borderColor="whiteAlpha.200"
 			position="fixed"
 			top="0"
@@ -33,7 +38,7 @@ export const NavigationShell = ({ navigation }: NavigationShellProps) => {
 			zIndex="sticky"
 		>
 			<Section>
-				<Navigation navigation={navigation} />
+				<Navigation isMobileMenuOpen={isMobileMenuOpen} navigation={navigation} onMobileMenuClose={closeMobileMenu} onMobileMenuToggle={toggleMobileMenu} />
 			</Section>
 		</Box>
 	);

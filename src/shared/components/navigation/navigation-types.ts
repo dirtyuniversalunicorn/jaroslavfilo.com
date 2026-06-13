@@ -4,7 +4,10 @@ export interface NavigationItem {
 }
 
 export interface NavigationProps {
+	isMobileMenuOpen: boolean;
 	navigation: NavigationItem[];
+	onMobileMenuClose: () => void;
+	onMobileMenuToggle: () => void;
 }
 
 export interface NavigationShellProps {
