@@ -20,7 +20,7 @@ export async function ProjectDetail({ slug }: { slug: string }) {
 							key={imageUrl}
 							alignItems="center"
 							aspectRatio={{ base: "4 / 3", md: "16 / 10" }}
-							bg="white"
+							bg="transparent"
 							borderColor="whiteAlpha.200"
 							borderWidth="1px"
 							display="flex"
