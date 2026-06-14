@@ -81,6 +81,13 @@ export const getHighlightedProjects = async (): Promise<ProjectViewModel[]> => {
 	return results.map(mapProjectRow);
 };
 
+export const getProjectsCount = async (): Promise<number> => {
+	const { env } = getCloudflareContext();
+	const { results } = await env.jaroslavfilo_db.prepare("SELECT COUNT(*) AS Count FROM Projects").all<{ Count: number }>();
+
+	return results[0]?.Count ?? 0;
+};
+
 export const getProjectBySlug = async (slug: string): Promise<ProjectViewModel | null> => {
 	const projects = await getProjects();
 

@@ -21,9 +21,11 @@ export type SocialsProps = {
 
 export type AboutMeSectionProps = {
 	socials: SocialItem[];
+	yearsOfExperience: number;
+	projectsCompleted: number;
 };
 
-export const AboutMeSection = ({ socials }: AboutMeSectionProps) => {
+export const AboutMeSection = ({ socials, yearsOfExperience, projectsCompleted }: AboutMeSectionProps) => {
 	return (
 		<Box as="section">
 			<Section py={{ base: 16, md: 20, lg: 24 }}>
@@ -38,7 +40,7 @@ export const AboutMeSection = ({ socials }: AboutMeSectionProps) => {
 					<Box display="flex" flexDirection="column" gap={{ base: 7, md: 8 }} justifyContent="space-between">
 						<Description />
 						<Socials socials={socials} justify={{ base: "center", md: "flex-start" }} mx="0" />
-						<Stats />
+						<Stats projectsCompleted={projectsCompleted} yearsOfExperience={yearsOfExperience} />
 						<Box order={{ base: 4 }} textAlign={{ base: "center", md: "left" }}>
 							<Link href="/about">
 								<Button variant="transparent" buttonTitle="More about me..." mt="auto" />

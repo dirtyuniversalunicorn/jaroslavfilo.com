@@ -1,7 +1,12 @@
 import { Grid } from "@chakra-ui/react";
 import { StatsItem } from "./stats-item";
 
-export const Stats = () => {
+type StatsProps = {
+	yearsOfExperience: number;
+	projectsCompleted: number;
+};
+
+export const Stats = ({ yearsOfExperience, projectsCompleted }: StatsProps) => {
 	return (
 		<Grid
 			gridTemplateColumns={{ base: "repeat(2, minmax(0, 1fr))", sm: "repeat(2, auto)" }}
@@ -10,8 +15,8 @@ export const Stats = () => {
 			justifyContent={{ base: "center", md: "start" }}
 			placeItems="center"
 		>
-			<StatsItem number={2} category="years of experience" />
-			<StatsItem number={3} category="projects completed" />
+			<StatsItem number={yearsOfExperience} category="years of experience" />
+			<StatsItem number={projectsCompleted} category="projects completed" />
 		</Grid>
 	);
 };
