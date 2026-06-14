@@ -122,17 +122,25 @@ export const ContactForm = () => {
 	};
 
 	return (
-		<form ref={formRef} onSubmit={sendEmail}>
-			<Flex flexDirection="column" gap={{ base: 3, md: 4 }} width="100%">
-				<Field.Root invalid={Boolean(errors.name)}>
-					<Input name="name" placeholder="Enter your name" borderColor="whiteAlpha.400" borderRadius={0} backgroundColor="whiteAlpha.100" />
+		<form ref={formRef} onSubmit={sendEmail} style={{ width: "100%" }}>
+			<Flex flexDirection="column" gap={{ base: 3, md: 4 }} minW={0} width="100%">
+				<Field.Root invalid={Boolean(errors.name)} minW={0}>
+					<Input name="name" placeholder="Enter your name" borderColor="whiteAlpha.400" borderRadius={0} backgroundColor="whiteAlpha.100" minW={0} />
 					{errors.name && <Field.ErrorText>{errors.name}</Field.ErrorText>}
 				</Field.Root>
-				<Field.Root invalid={Boolean(errors.email)}>
-					<Input name="email" type="email" placeholder="Enter your email" borderColor="whiteAlpha.400" borderRadius={0} backgroundColor="whiteAlpha.100" />
+				<Field.Root invalid={Boolean(errors.email)} minW={0}>
+					<Input
+						name="email"
+						type="email"
+						placeholder="Enter your email"
+						borderColor="whiteAlpha.400"
+						borderRadius={0}
+						backgroundColor="whiteAlpha.100"
+						minW={0}
+					/>
 					{errors.email && <Field.ErrorText>{errors.email}</Field.ErrorText>}
 				</Field.Root>
-				<Field.Root required invalid={Boolean(errors.message)} gap={2}>
+				<Field.Root required invalid={Boolean(errors.message)} gap={2} minW={0}>
 					<Textarea
 						autoresize
 						placeholder="Your message ..."
@@ -144,6 +152,7 @@ export const ContactForm = () => {
 						borderColor="whiteAlpha.400"
 						backgroundColor="whiteAlpha.100"
 						borderRadius={0}
+						minW={0}
 					/>
 					<Field.HelperText as="div" width="100%">
 						<ProgressMessageBar letters={letters} max={CONFIG.MAX_LETTERS} />
@@ -152,8 +161,18 @@ export const ContactForm = () => {
 				</Field.Root>
 
 				{recaptchaSiteKey ? (
-					<Box maxW="100%" overflow="hidden">
-						<ReCAPTCHA sitekey={recaptchaSiteKey} ref={recaptchaRef} />
+					<Box
+						maxW="100%"
+						overflow="hidden"
+						height="calc(78px * var(--recaptcha-scale))"
+						css={{
+							containerType: "inline-size",
+							"--recaptcha-scale": "min(1, calc(100cqw / 304))",
+						}}
+					>
+						<Box width="304px" transform="scale(var(--recaptcha-scale))" transformOrigin="top left">
+							<ReCAPTCHA sitekey={recaptchaSiteKey} ref={recaptchaRef} />
+						</Box>
 					</Box>
 				) : null}
 

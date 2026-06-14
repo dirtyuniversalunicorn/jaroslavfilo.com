@@ -20,8 +20,10 @@ export const FooterGrid = () => {
 			}}
 			gap={{ base: 10, md: 12, lg: 16 }}
 			alignItems="start"
+			minW={0}
+			overflow="hidden"
 		>
-			<GridItem>
+			<GridItem minW={0}>
 				<Socials
 					showTitle
 					socials={socials}
@@ -33,10 +35,10 @@ export const FooterGrid = () => {
 					order="initial"
 				/>
 			</GridItem>
-			<GridItem>
+			<GridItem minW={0}>
 				<FooterGridList footerPages={footerPages} />
 			</GridItem>
-			<GridItem gridColumn={{ base: "1", md: "1 / -1", lg: "3" }} gridRow={{ lg: "1 / span 2" }} width="100%">
+			<GridItem gridColumn={{ base: "1", md: "1 / -1", lg: "3" }} gridRow={{ lg: "1 / span 2" }} minW={0} width="100%">
 				<ContactForm />
 			</GridItem>
 		</Grid>

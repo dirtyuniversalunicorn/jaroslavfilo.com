@@ -2,12 +2,12 @@ import { Flex, Text } from "@chakra-ui/react";
 
 export const BottomText = ({ text }: { text: string }) => {
 	return (
-		<Flex alignItems="flex-end" mx="auto" minW={0} overflow="hidden" width="100%">
+		<Flex alignItems="flex-end" mx="auto" minW={0} overflow="hidden" pb={{ base: 2, md: 3, lg: 4 }} width="100%" css={{ containerType: "inline-size" }}>
 			<Text
 				as="h1"
-				fontSize={{ base: "clamp(2.25rem, 12.5vw, 5rem)", md: "clamp(6rem, 13vw, 12rem)" }}
+				fontSize={{ base: "clamp(1.75rem, 11cqw, 4rem)", md: "clamp(4.5rem, 10.5cqw, 9.5rem)", lg: "clamp(5.5rem, 10.5cqw, 10.5rem)" }}
 				fontWeight={400}
-				lineHeight="0.8"
+				lineHeight="1"
 				opacity={0.22}
 				textAlign="center"
 				textTransform="uppercase"
