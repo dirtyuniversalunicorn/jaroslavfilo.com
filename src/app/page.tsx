@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { AboutMeSection } from "@/shared/components/sections/about-me-section/about-me-section";
 import { HomeProjectsSection } from "@/shared/components/sections/projects-section/components/home-projects-section";
-import { getProjects } from "@/shared/components/sections/projects-section/queries";
+import { getHighlightedProjects } from "@/shared/components/sections/projects-section/queries";
 import { TechStackSection } from "@/shared/components/sections/tech-stack-section/tech-stack-section";
 import { Band } from "@/shared/components/ui/band";
 import { BottomText } from "@/shared/components/ui/bottom-text";
@@ -11,7 +11,7 @@ import { socials } from "@/shared/const/socials";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-	const projects = await getProjects(3);
+	const projects = await getHighlightedProjects();
 
 	return (
 		<>

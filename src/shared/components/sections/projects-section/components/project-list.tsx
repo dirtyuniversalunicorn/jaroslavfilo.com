@@ -1,6 +1,8 @@
 import { Badge, Box, Flex, Link, SimpleGrid, Stack, Text, Wrap } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import type { ProjectViewModel } from "../types";
+import { getProjectTypeColor, getProjectTypeLabel } from "./project-display";
 
 export type ProjectListProps = {
 	projects: ProjectViewModel[];
@@ -29,8 +31,14 @@ export function ProjectList({ projects, limit = "all" }: ProjectListProps) {
 		<SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 4, md: 5 }}>
 			{visibleProjects.map((project) => (
 				<Box key={project.id} borderWidth="1px" borderColor="whiteAlpha.200" px={{ base: 5, md: 6 }} py={{ base: 5, md: 6 }}>
-					<Stack gap={4}>
+					<Stack gap={4} minH="100%">
 						<Wrap gap={2}>
+							<Badge borderRadius={0} colorPalette={getProjectTypeColor(project.projectType)} variant="outline">
+								{getProjectTypeLabel(project)}
+							</Badge>
+							<Badge borderRadius={0} colorPalette={project.wasContributor ? "blue" : "gray"} variant="outline">
+								{project.wasContributor ? "Contributor" : "Primary work"}
+							</Badge>
 							{project.technologies.map((technology) => (
 								<Badge key={technology} borderRadius={0} variant="outline">
 									{technology}
@@ -44,6 +52,28 @@ export function ProjectList({ projects, limit = "all" }: ProjectListProps) {
 							<Text color="whiteAlpha.700" lineHeight="1.7">
 								{project.shortDescription}
 							</Text>
+						</Flex>
+						<Flex gap={4} mt="auto" wrap="wrap" alignItems="center">
+							<Link asChild color="white" fontSize="sm" fontWeight={500} textTransform="uppercase">
+								<NextLink href={`/projects/${project.slug}`}>View details</NextLink>
+							</Link>
+							{project.websiteUrl && (
+								<Link
+									href={project.websiteUrl}
+									target="_blank"
+									rel="noreferrer"
+									color="whiteAlpha.800"
+									display="inline-flex"
+									alignItems="center"
+									gap={2}
+									fontSize="sm"
+									fontWeight={500}
+									textTransform="uppercase"
+								>
+									<FaExternalLinkAlt />
+									{getProjectTypeLabel(project)}
+								</Link>
+							)}
 						</Flex>
 					</Stack>
 				</Box>

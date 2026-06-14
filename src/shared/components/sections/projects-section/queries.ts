@@ -3,10 +3,15 @@ import type { ProjectViewModel } from "./types";
 
 type ProjectRow = {
 	ProjectId: number;
+	ProjectSlug: string;
 	Title: string;
 	Abbr: string;
 	ShortDesc: string;
 	LongDesc: string;
+	WasContributor: boolean | number;
+	Highlighted: boolean | number;
+	ProjectUrl: string | null;
+	ProjectType: "live" | "internal-enterprise" | "private";
 	PictureUrls: string;
 	TechStack: string;
 };
@@ -36,11 +41,14 @@ const createSlug = (title: string, fallback: string) => {
 
 const mapProjectRow = (row: ProjectRow): ProjectViewModel => ({
 	id: String(row.ProjectId),
-	slug: createSlug(row.Title, row.Abbr),
+	slug: row.ProjectSlug || createSlug(row.Title, row.Abbr),
 	title: row.Title,
-	websiteUrl: "",
+	websiteUrl: row.ProjectUrl ?? "",
+	projectType: row.ProjectType,
 	shortDescription: row.ShortDesc,
 	longDescription: row.LongDesc,
+	wasContributor: row.WasContributor === true || row.WasContributor === 1,
+	highlighted: row.Highlighted === true || row.Highlighted === 1,
 	technologies: parseStringArray(row.TechStack),
 	imageUrl: parseStringArray(row.PictureUrls),
 });
@@ -60,6 +68,13 @@ export const getProjects = async (limit?: number): Promise<ProjectViewModel[]> =
 		: env.jaroslavfilo_db.prepare("SELECT * FROM Projects ORDER BY ProjectId DESC");
 
 	const { results } = await statement.all<ProjectRow>();
+
+	return results.map(mapProjectRow);
+};
+
+export const getHighlightedProjects = async (): Promise<ProjectViewModel[]> => {
+	const { env } = getCloudflareContext();
+	const { results } = await env.jaroslavfilo_db.prepare("SELECT * FROM Projects WHERE Highlighted = TRUE ORDER BY ProjectId DESC").all<ProjectRow>();
 
 	return results.map(mapProjectRow);
 };

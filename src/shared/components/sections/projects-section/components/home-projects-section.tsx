@@ -19,11 +19,11 @@ export const HomeProjectsSection = ({ projects = [] }: HomeProjectsSectionProps)
 						Recent work
 					</Text>
 					<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
-						A small preview of selected projects. Once D1 is wired up, this homepage section will show the first three projects.
+						A small preview of highlighted projects from the portfolio database.
 					</Text>
 				</Stack>
 
-				<ProjectList projects={projects} limit={3} />
+				<ProjectList projects={projects} />
 			</Stack>
 		</Section>
 	);

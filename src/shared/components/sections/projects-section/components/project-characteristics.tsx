@@ -4,6 +4,7 @@ import { Badge, Box, Collapsible, Link, Stack, Text, Wrap } from "@chakra-ui/rea
 import { useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import type { ProjectViewModel } from "../types";
+import { getProjectTypeColor, getProjectTypeLabel } from "./project-display";
 
 type ProjectCharacteristicsProps = {
 	projectDetails: ProjectViewModel;
@@ -19,10 +20,16 @@ export const ProjectCharacteristics = ({ projectDetails }: ProjectCharacteristic
 					{projectDetails.title}
 				</Text>
 				<Wrap gap={2}>
+					<Badge borderRadius={0} colorPalette={getProjectTypeColor(projectDetails.projectType)} variant="outline">
+						{getProjectTypeLabel(projectDetails)}
+					</Badge>
+					<Badge borderRadius={0} colorPalette={projectDetails.wasContributor ? "blue" : "gray"} variant="outline">
+						{projectDetails.wasContributor ? "Contributor" : "Primary work"}
+					</Badge>
 					{projectDetails.websiteUrl && (
-						<Link href={projectDetails.websiteUrl} target="_blank" display="inline-flex" alignItems="center" gap={2}>
+						<Link href={projectDetails.websiteUrl} target="_blank" rel="noreferrer" display="inline-flex" alignItems="center" gap={2}>
 							<FaExternalLinkAlt />
-							Visit project
+							{getProjectTypeLabel(projectDetails)}
 						</Link>
 					)}
 					{projectDetails.technologies.map((technology) => (
