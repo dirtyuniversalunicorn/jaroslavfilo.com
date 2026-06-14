@@ -2,7 +2,7 @@ import { Badge, Box, Flex, Link, SimpleGrid, Stack, Text, Wrap } from "@chakra-u
 import NextLink from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import type { ProjectViewModel } from "../types";
-import { getProjectTypeColor, getProjectTypeLabel } from "./project-display";
+import { getProjectActionLabel, getProjectTypeColor, getProjectTypeLabel } from "./project-display";
 
 export type ProjectListProps = {
 	projects: ProjectViewModel[];
@@ -71,7 +71,7 @@ export function ProjectList({ projects, limit = "all" }: ProjectListProps) {
 									textTransform="uppercase"
 								>
 									<FaExternalLinkAlt />
-									{getProjectTypeLabel(project)}
+									{getProjectActionLabel(project)}
 								</Link>
 							)}
 						</Flex>

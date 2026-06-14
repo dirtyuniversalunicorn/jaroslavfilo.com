@@ -3,7 +3,7 @@ export type ProjectViewModel = {
 	slug: string;
 	title: string;
 	websiteUrl: string;
-	projectType: "live" | "internal-enterprise" | "private";
+	projectType: "live" | "enterprise" | "enterprise-internal" | "private";
 	shortDescription: string;
 	longDescription: string;
 	wasContributor: boolean;

@@ -11,7 +11,7 @@ type ProjectRow = {
 	WasContributor: boolean | number;
 	Highlighted: boolean | number;
 	ProjectUrl: string | null;
-	ProjectType: "live" | "internal-enterprise" | "private";
+	ProjectType: "live" | "enterprise" | "enterprise-internal" | "private";
 	PictureUrls: string;
 	TechStack: string;
 };
