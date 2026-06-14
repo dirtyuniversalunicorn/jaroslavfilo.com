@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, Box, Collapsible, Link, Stack, Text, Wrap } from "@chakra-ui/react";
+import { Badge, Box, Collapsible, Flex, Link, Stack, Text, Wrap } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import type { ProjectViewModel } from "../types";
@@ -26,12 +26,6 @@ export const ProjectCharacteristics = ({ projectDetails }: ProjectCharacteristic
 					<Badge borderRadius={0} colorPalette={projectDetails.wasContributor ? "blue" : "gray"} variant="outline">
 						{projectDetails.wasContributor ? "Contributor" : "Primary work"}
 					</Badge>
-					{projectDetails.websiteUrl && (
-						<Link href={projectDetails.websiteUrl} target="_blank" rel="noreferrer" display="inline-flex" alignItems="center" gap={2}>
-							<FaExternalLinkAlt />
-							{getProjectActionLabel(projectDetails)}
-						</Link>
-					)}
 					{projectDetails.technologies.map((technology) => (
 						<Badge key={technology} borderRadius={0} variant="outline">
 							{technology}
@@ -42,6 +36,25 @@ export const ProjectCharacteristics = ({ projectDetails }: ProjectCharacteristic
 			<Text color="whiteAlpha.800" lineHeight="1.7">
 				{projectDetails.shortDescription}
 			</Text>
+			{projectDetails.websiteUrl && (
+				<Flex>
+					<Link
+						href={projectDetails.websiteUrl}
+						target="_blank"
+						rel="noreferrer"
+						display="inline-flex"
+						alignItems="center"
+						gap={2}
+						color="white"
+						fontSize="sm"
+						fontWeight={500}
+						textTransform="uppercase"
+					>
+						<FaExternalLinkAlt />
+						{getProjectActionLabel(projectDetails)}
+					</Link>
+				</Flex>
+			)}
 			{projectDetails.longDescription && (
 				<Collapsible.Root open={isOpen} onOpenChange={(event) => setIsOpen(event.open)}>
 					<Collapsible.Trigger paddingY="3" color="whiteAlpha.700">
