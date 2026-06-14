@@ -11,6 +11,7 @@ type ProjectRow = {
 	WasContributor: boolean | number;
 	Highlighted: boolean | number;
 	ProjectUrl: string | null;
+	GithubUrl: string | null;
 	ProjectType: "live" | "enterprise" | "enterprise-internal" | "private";
 	PictureUrls: string;
 	TechStack: string;
@@ -44,6 +45,7 @@ const mapProjectRow = (row: ProjectRow): ProjectViewModel => ({
 	slug: row.ProjectSlug || createSlug(row.Title, row.Abbr),
 	title: row.Title,
 	websiteUrl: row.ProjectUrl ?? "",
+	githubUrl: row.GithubUrl ?? "",
 	projectType: row.ProjectType,
 	shortDescription: row.ShortDesc,
 	longDescription: row.LongDesc,

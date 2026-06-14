@@ -2,7 +2,7 @@
 
 import { Badge, Box, Collapsible, Flex, Link, Stack, Text, Wrap } from "@chakra-ui/react";
 import { useState } from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import type { ProjectViewModel } from "../types";
 import { getProjectActionLabel, getProjectTypeColor, getProjectTypeLabel } from "./project-display";
 
@@ -36,23 +36,42 @@ export const ProjectCharacteristics = ({ projectDetails }: ProjectCharacteristic
 			<Text color="whiteAlpha.800" lineHeight="1.7">
 				{projectDetails.shortDescription}
 			</Text>
-			{projectDetails.websiteUrl && (
-				<Flex>
-					<Link
-						href={projectDetails.websiteUrl}
-						target="_blank"
-						rel="noreferrer"
-						display="inline-flex"
-						alignItems="center"
-						gap={2}
-						color="white"
-						fontSize="sm"
-						fontWeight={500}
-						textTransform="uppercase"
-					>
-						<FaExternalLinkAlt />
-						{getProjectActionLabel(projectDetails)}
-					</Link>
+			{(projectDetails.websiteUrl || projectDetails.githubUrl) && (
+				<Flex gap={4} wrap="wrap">
+					{projectDetails.websiteUrl && (
+						<Link
+							href={projectDetails.websiteUrl}
+							target="_blank"
+							rel="noreferrer"
+							display="inline-flex"
+							alignItems="center"
+							gap={2}
+							color="white"
+							fontSize="sm"
+							fontWeight={500}
+							textTransform="uppercase"
+						>
+							<FaExternalLinkAlt />
+							{getProjectActionLabel(projectDetails)}
+						</Link>
+					)}
+					{projectDetails.githubUrl && (
+						<Link
+							href={projectDetails.githubUrl}
+							target="_blank"
+							rel="noreferrer"
+							display="inline-flex"
+							alignItems="center"
+							gap={2}
+							color="white"
+							fontSize="sm"
+							fontWeight={500}
+							textTransform="uppercase"
+						>
+							<FaGithub />
+							GitHub
+						</Link>
+					)}
 				</Flex>
 			)}
 			{projectDetails.longDescription && (
