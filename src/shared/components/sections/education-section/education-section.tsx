@@ -18,7 +18,7 @@ export const EducationSection = async () => {
 							Certificates and learning
 						</Text>
 						<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
-							Certificates and education records loaded from the portfolio database.
+							Certificates I picked up along the way to becoming a frontend developer, with more learning still ahead.
 						</Text>
 					</Stack>
 

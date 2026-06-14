@@ -19,7 +19,7 @@ export const ProjectsPageContent = ({ projects = [] }: ProjectsPageContentProps)
 						Selected work
 					</Text>
 					<Text color="whiteAlpha.700" fontSize={{ base: "lg", md: "xl" }} lineHeight="1.7">
-						This section is ready for project data. Once the D1 table is connected, the same component can render real projects from the database.
+						A collection of selected applications, enterprise tools, and collaboration work I have built or contributed to.
 					</Text>
 				</Stack>
 

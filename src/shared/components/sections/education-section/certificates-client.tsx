@@ -17,10 +17,10 @@ export const CertificatesClient = ({ certificates }: CertificatesClientProps) =>
 			<Box borderWidth="1px" borderColor="whiteAlpha.200" px={{ base: 5, md: 8 }} py={{ base: 8, md: 10 }}>
 				<Stack gap={3} maxW="42rem">
 					<Text as="h3" fontSize={{ base: "2xl", md: "3xl" }} fontWeight={400}>
-						Education entries are coming soon.
+						No education entries available.
 					</Text>
 					<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
-						There are no certificates or education records to display yet. Once the D1 table is connected, they will render here.
+						Certificates will appear here once education records are available.
 					</Text>
 				</Stack>
 			</Box>
