@@ -31,18 +31,27 @@ export const CertificatesClient = ({ certificates }: CertificatesClientProps) =>
 		<>
 			<Grid gridTemplateColumns={{ base: "1fr", sm: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }} gap={{ base: 4, md: 6 }}>
 				{certificates.map((certificate) => (
-					<Image
-						key={certificate.id}
-						src={certificate.imageUrl}
-						alt={certificate.title}
-						aspectRatio="4 / 3"
-						cursor="pointer"
-						objectFit="cover"
-						borderWidth="1px"
-						borderColor="whiteAlpha.200"
-						_hover={{ opacity: 0.82 }}
-						onClick={() => setActiveImage({ src: certificate.imageUrl, alt: certificate.title })}
-					/>
+					<Stack key={certificate.id} gap={3}>
+						<Image
+							src={certificate.imageUrl}
+							alt={certificate.title}
+							aspectRatio="4 / 3"
+							cursor="pointer"
+							objectFit="cover"
+							borderWidth="1px"
+							borderColor="whiteAlpha.200"
+							_hover={{ opacity: 0.82 }}
+							onClick={() => setActiveImage({ src: certificate.imageUrl, alt: certificate.title })}
+						/>
+						<Stack gap={1}>
+							<Text color="white" fontSize={{ base: "md", md: "lg" }} lineHeight="1.3">
+								{certificate.title}
+							</Text>
+							<Text color="whiteAlpha.700" fontSize="sm" textTransform="uppercase">
+								{certificate.issuer}
+							</Text>
+						</Stack>
+					</Stack>
 				))}
 			</Grid>
 

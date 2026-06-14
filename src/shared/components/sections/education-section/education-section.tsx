@@ -18,7 +18,7 @@ export const EducationSection = async () => {
 							Certificates and learning
 						</Text>
 						<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
-							This section is ready for education and certificate data. Once D1 is wired up, records from the database will appear here.
+							Certificates and education records loaded from the portfolio database.
 						</Text>
 					</Stack>
 
