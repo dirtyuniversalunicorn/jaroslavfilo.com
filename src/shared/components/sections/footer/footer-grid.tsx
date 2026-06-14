@@ -1,18 +1,14 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import { ContactForm } from "@/features/contact-me/components/contact-form";
 import { navigation } from "@/shared/components/navigation/navigation-config";
-import { footerNecessities } from "@/shared/const/footer-necessities";
 import { socials } from "@/shared/const/socials";
 import { Socials } from "../../socials";
 import { FooterGridList } from "./footer-grid-list";
 
-const footerPages = [
-	{ page: "home", url: "" },
-	...navigation.map((item) => ({
-		page: item.pageTitle,
-		url: item.href.replace(/^\//, ""),
-	})),
-];
+const footerPages = navigation.map((item) => ({
+	page: item.pageTitle,
+	url: item.href.replace(/^\//, ""),
+}));
 
 export const FooterGrid = () => {
 	return (
@@ -39,9 +35,6 @@ export const FooterGrid = () => {
 			</GridItem>
 			<GridItem>
 				<FooterGridList footerPages={footerPages} />
-			</GridItem>
-			<GridItem>
-				<FooterGridList footerPages={footerNecessities} />
 			</GridItem>
 			<GridItem gridColumn={{ base: "1", md: "1 / -1", lg: "3" }} gridRow={{ lg: "1 / span 2" }} width="100%">
 				<ContactForm />

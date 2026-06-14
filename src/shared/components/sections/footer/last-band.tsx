@@ -20,7 +20,7 @@ export const LastBand = () => {
 				<Link href="https://www.behance.net/swifttech03" target="_blank">
 					Naeem
 				</Link>
-				, coded by Me
+				, coded by Me | <Link href="/conditions">Conditions</Link>
 			</Text>
 		</Flex>
 	);
