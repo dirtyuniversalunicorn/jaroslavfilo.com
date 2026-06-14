@@ -1,7 +1,7 @@
 "use client";
 
 import { ChakraProvider, createSystem, defaultConfig, defineRecipe } from "@chakra-ui/react";
-import { ColorModeProvider, type ColorModeProviderProps } from "./color-mode";
+import type { ReactNode } from "react";
 
 const customButton = defineRecipe({
 	variants: {
@@ -25,10 +25,6 @@ const system = createSystem(defaultConfig, {
 	},
 });
 
-export function Provider(props: ColorModeProviderProps) {
-	return (
-		<ChakraProvider value={system}>
-			<ColorModeProvider {...props} />
-		</ChakraProvider>
-	);
+export function Provider({ children }: { children: ReactNode }) {
+	return <ChakraProvider value={system}>{children}</ChakraProvider>;
 }
