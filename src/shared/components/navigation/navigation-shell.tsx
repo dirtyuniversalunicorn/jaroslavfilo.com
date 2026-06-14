@@ -16,7 +16,8 @@ export const NavigationShell = ({ navigation }: NavigationShellProps) => {
 
 	useEffect(() => {
 		const updateScrolledState = () => {
-			setHasScrolled(window.scrollY > 12);
+			const nextHasScrolled = window.scrollY > 12;
+			setHasScrolled((currentHasScrolled) => (currentHasScrolled === nextHasScrolled ? currentHasScrolled : nextHasScrolled));
 		};
 
 		updateScrolledState();
