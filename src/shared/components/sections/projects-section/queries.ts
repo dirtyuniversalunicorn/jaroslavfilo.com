@@ -55,12 +55,6 @@ const mapProjectRow = (row: ProjectRow): ProjectViewModel => ({
 	imageUrl: parseStringArray(row.PictureUrls),
 });
 
-export const getProjectStaticParamsSlugs = async () => {
-	const projects = await getProjects();
-
-	return projects.map((project) => ({ slug: project.slug }));
-};
-
 export const getProjects = async (limit?: number): Promise<ProjectViewModel[]> => {
 	const { env } = getCloudflareContext();
 	const shouldLimit = typeof limit === "number" && Number.isInteger(limit) && limit > 0;

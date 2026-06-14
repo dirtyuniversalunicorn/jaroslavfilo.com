@@ -1,23 +1,11 @@
-import { Box, Grid, type WrapProps } from "@chakra-ui/react";
+import { Box, Grid } from "@chakra-ui/react";
 import Link from "next/link";
-import { Socials } from "../../socials";
+import { type SocialItem, Socials } from "../../socials";
 import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
 import { Description } from "./description";
 import { Photo } from "./photo";
 import { Stats } from "./stats";
-
-export type SocialItem = {
-	index: number;
-	name: string;
-	url: string;
-	pictureUrl: string;
-};
-
-export type SocialsProps = {
-	socials: SocialItem[];
-	showTitle?: boolean;
-} & WrapProps;
 
 export type AboutMeSectionProps = {
 	socials: SocialItem[];

@@ -2,6 +2,7 @@ import { Box, Stack, Text, Timeline } from "@chakra-ui/react";
 import type { ElementType } from "react";
 import { LuBriefcaseBusiness, LuFlaskConical, LuLaptop } from "react-icons/lu";
 import { Section } from "@/shared/components/ui/section";
+import { SectionHeading } from "@/shared/components/ui/section-heading";
 import { getCareerTimelineItems } from "./queries";
 import type { CareerTimelineIconKey } from "./types";
 
@@ -18,17 +19,11 @@ export const ExperienceTimelineSection = async () => {
 		<Box as="section" bg="#09090b" color="white">
 			<Section py={{ base: 16, md: 20, lg: 24 }}>
 				<Stack gap={{ base: 8, md: 10 }} maxW="6xl" mx="auto">
-					<Stack gap={{ base: 4, md: 5 }} maxW="46rem">
-						<Text textTransform="uppercase" color="whiteAlpha.700" fontSize="sm">
-							Timeline
-						</Text>
-						<Text as="h2" fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }} lineHeight="1" fontWeight={400}>
-							Work and growth
-						</Text>
-						<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
-							A short look at my transition into frontend development and the experience I am building along the way.
-						</Text>
-					</Stack>
+					<SectionHeading
+						eyebrow="Timeline"
+						title="Work and growth"
+						description="A short look at my transition into frontend development and the experience I am building along the way."
+					/>
 
 					<Timeline.Root colorPalette="gray" size="xl" variant="outline" maxW="4xl">
 						{timelineItems.map((item) => {

@@ -1,6 +1,7 @@
 import { Badge, Box, Flex, Link, SimpleGrid, Stack, Text, Wrap } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { EmptyState } from "@/shared/components/ui/empty-state";
 import type { ProjectViewModel } from "../types";
 import { getProjectActionLabel, getProjectTypeColor, getProjectTypeLabel } from "./project-display";
 
@@ -14,16 +15,10 @@ export function ProjectList({ projects, limit = "all" }: ProjectListProps) {
 
 	if (visibleProjects.length === 0) {
 		return (
-			<Box borderWidth="1px" borderColor="whiteAlpha.200" px={{ base: 5, md: 8 }} py={{ base: 8, md: 10 }}>
-				<Stack gap={3} maxW="42rem">
-					<Text as="h2" fontSize={{ base: "2xl", md: "3xl" }} fontWeight={400}>
-						Projects are coming soon.
-					</Text>
-					<Text color="whiteAlpha.700" fontSize={{ base: "md", md: "lg" }} lineHeight="1.7">
-						There are no projects to display yet. The UI is ready; when D1 starts returning project rows, they will appear here automatically.
-					</Text>
-				</Stack>
-			</Box>
+			<EmptyState
+				title="Projects are coming soon."
+				description="There are no projects to display yet. The UI is ready; when D1 starts returning project rows, they will appear here automatically."
+			/>
 		);
 	}
 

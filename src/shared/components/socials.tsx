@@ -1,7 +1,6 @@
 import { Flex, Link, Text, Wrap, type WrapProps } from "@chakra-ui/react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 
-// Type for a single social item
 export type SocialItem = {
 	index: number;
 	name: string;
@@ -9,16 +8,10 @@ export type SocialItem = {
 	pictureUrl: string;
 };
 
-// Props for Socials component
 export type SocialsProps = {
 	socials: SocialItem[];
 	showTitle?: boolean;
 } & WrapProps;
-
-// Props for AboutSection (can reuse SocialItem type)
-export type AboutSectionProps = {
-	socials: SocialItem[];
-};
 
 export const Socials = ({ socials, showTitle, ...props }: SocialsProps) => {
 	const getIcon = (name: string) => {

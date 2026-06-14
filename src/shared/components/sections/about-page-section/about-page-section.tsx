@@ -1,7 +1,6 @@
 import { Box, Grid, Heading, Image, SimpleGrid, Stack, Text } from "@chakra-ui/react";
-import { Socials } from "@/shared/components/socials";
+import { type SocialItem, Socials } from "@/shared/components/socials";
 import { Section } from "@/shared/components/ui/section";
-import type { SocialItem } from "../about-me-section/about-me-section";
 
 const highlights = ["Responsive interfaces", "Modern React and Next.js", "Clean component structure", "Performance-minded delivery"];
 

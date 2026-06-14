@@ -8,6 +8,7 @@
 		"cf:build": "opennextjs-cloudflare build",
 		"start": "next start",
 		"biome": "biome check .",
+		"fallow": "fallow",
 		"format": "biome format --write .",
 		"format:check": "biome format .",
 		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
