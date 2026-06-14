@@ -1,13 +1,18 @@
 import { Flex } from "@chakra-ui/react";
 import { AboutMeSection } from "@/shared/components/sections/about-me-section/about-me-section";
 import { HomeProjectsSection } from "@/shared/components/sections/projects-section/components/home-projects-section";
+import { getProjects } from "@/shared/components/sections/projects-section/queries";
 import { TechStackSection } from "@/shared/components/sections/tech-stack-section/tech-stack-section";
 import { Band } from "@/shared/components/ui/band";
 import { BottomText } from "@/shared/components/ui/bottom-text";
 import { Section } from "@/shared/components/ui/section";
 import { socials } from "@/shared/const/socials";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+	const projects = await getProjects(3);
+
 	return (
 		<>
 			<Flex
@@ -24,7 +29,7 @@ export default function Home() {
 				</Section>
 			</Flex>
 			<AboutMeSection socials={socials} />
-			<HomeProjectsSection />
+			<HomeProjectsSection projects={projects} />
 			<TechStackSection />
 		</>
 	);
