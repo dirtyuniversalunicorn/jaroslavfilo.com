@@ -3,8 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
+		"dev": "next dev --webpack",
+		"build": "next build --webpack",
 		"cf:build": "opennextjs-cloudflare build",
 		"start": "next start",
 		"biome": "biome check .",
@@ -22,6 +22,7 @@
 		"@opennextjs/cloudflare": "^1.19.9",
 		"@react-email/components": "^1.0.2",
 		"@react-email/render": "^2.0.0",
+		"better-auth": "^1.6.18",
 		"fallow": "^2.96.0",
 		"next": "16.2.6",
 		"react": "^19.1.7",
