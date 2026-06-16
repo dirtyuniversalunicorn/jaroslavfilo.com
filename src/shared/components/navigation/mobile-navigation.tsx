@@ -1,6 +1,7 @@
 import { Box, IconButton, VStack } from "@chakra-ui/react";
 import { LuMenu, LuX } from "react-icons/lu";
 import { NavigationLink } from "./navigation-item";
+import { NavigationSignOut } from "./navigation-sign-out";
 import type { MobileNavigationButtonProps, NavigationItem } from "./navigation-types";
 
 export const MobileNavigationButton = ({ isOpen, onClick }: MobileNavigationButtonProps) => {
@@ -31,6 +32,7 @@ export const MobileNavigationMenu = ({ currentPath, isOpen, navigation, onNaviga
 				{navigation.map((item) => (
 					<NavigationLink key={item.href} href={item.href} pageTitle={item.pageTitle} isCurrent={currentPath === item.href} onClick={onNavigate} />
 				))}
+				<NavigationSignOut onSignOut={onNavigate} />
 			</VStack>
 		</Box>
 	);
